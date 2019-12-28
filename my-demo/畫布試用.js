@@ -44,6 +44,10 @@ var 畫布經 = new (function() {
   /*___wenyan_module_洋經_end___*/
 
   /*"此乃畫布經"*/
+  var 奔走 = "mousemove"
+  var 推敲 = "click"
+  var 按下 = "mousedown"
+  var 抬起 = "mouseup"
   var 上下文 = 0
   var 畫布元素 = 0
   var 得一元素 = () => 0
@@ -163,90 +167,91 @@ var 畫布經 = new (function() {
     var 式樣 = _ans22
     上下文["font"] = 式樣
   }
-  var 打探鼠標之本 = () => 0
-  打探鼠標之本 = function(所為) {
-    return function(探子) {
-      var _ans23 = 畫布元素.addEventListener(所為, 探子)
+  var 監聽術 = () => 0
+  監聽術 = function(物) {
+    return function(所為) {
+      return function(探子) {
+        var _ans23 = 物.addEventListener(所為, 探子)
+      }
     }
   }
-  var 打探鼠標 = () => 0
-  打探鼠標 = function(探子) {
-    var 奔走 = "mousemove"
-    var 推敲 = "click"
-    var 按下 = "mousedown"
-    var 抬起 = "mouseup"
-    var 探聽鼠標 = () => 0
-    探聽鼠標 = function(鼠報) {
-      var _ans24 = 鼠報.preventDefault()
-      var _ans25 = 鼠報["clientX"]
-      var 橫 = _ans25
-      var _ans26 = 鼠報["clientY"]
-      var 縱 = _ans26
-      var _ans27 = 鼠報["type"]
-      var 所為 = _ans27
-      var _ans28 = 鼠報["button"]
-      var 所按 = _ans28
-      var _ans29 = 畫布元素.getBoundingClientRect()
-      var 畫布方位 = _ans29
-      var _ans30 = 橫 - 畫布方位.left
-      橫 = _ans30
-      var _ans31 = 縱 - 畫布方位.top
-      縱 = _ans31
-      var 報 = {}
-      報 = {
-        橫: 橫,
-        縱: 縱,
-        奔走乎: false,
-        推敲乎: false,
-        按下乎: false,
-        抬起乎: false,
-        左鍵乎: false,
-        中鍵乎: false,
-        右鍵乎: false
-      }
-      if (所為 == 奔走) {
-        報["奔走乎"] = true
-      }
-      if (所為 == 推敲) {
-        報["推敲乎"] = true
-      }
-      if (所為 == 按下) {
-        報["按下乎"] = true
-      }
-      if (所為 == 抬起) {
-        報["抬起乎"] = true
-      }
-      if (所按 == 0) {
-        報["左鍵乎"] = true
-      }
-      if (所按 == 1) {
-        報["中鍵乎"] = true
-      }
-      if (所按 == 2) {
-        報["右鍵乎"] = true
-      }
-      var _ans32 = 探子(報)
+  var 解鼠 = () => 0
+  解鼠 = function(鼠) {
+    var _ans24 = 鼠["clientX"]
+    var 橫 = _ans24
+    var _ans25 = 鼠["clientY"]
+    var 縱 = _ans25
+    var _ans26 = 鼠["type"]
+    var 所為 = _ans26
+    var _ans27 = 鼠["button"]
+    var 所按 = _ans27
+    var _ans28 = 畫布元素.getBoundingClientRect()
+    var 畫布方位 = _ans28
+    var _ans29 = 橫 - 畫布方位.left
+    橫 = _ans29
+    var _ans30 = 縱 - 畫布方位.top
+    縱 = _ans30
+    var 報 = {}
+    報 = {
+      橫: 橫,
+      縱: 縱,
+      奔走乎: false,
+      推敲乎: false,
+      按下乎: false,
+      抬起乎: false,
+      左鍵乎: false,
+      中鍵乎: false,
+      右鍵乎: false
+    }
+    if (所為 == 奔走) {
+      報["奔走乎"] = true
+    }
+    if (所為 == 推敲) {
+      報["推敲乎"] = true
+    }
+    if (所為 == 按下) {
+      報["按下乎"] = true
+    }
+    if (所為 == 抬起) {
+      報["抬起乎"] = true
+    }
+    if (所按 == 0) {
+      報["左鍵乎"] = true
+    }
+    if (所按 == 1) {
+      報["中鍵乎"] = true
+    }
+    if (所按 == 2) {
+      報["右鍵乎"] = true
+    }
+    return 報
+  }
+  var 捕鼠 = () => 0
+  捕鼠 = function(捕鼠者) {
+    if (捕鼠者) {
+    } else {
+      return
     }
     var 可為 = []
-    可為.push(4, 2)
+    可為.push(奔走, 推敲, 按下, 抬起)
     for (var 為 of 可為) {
-      var _ans33 = 畫布元素["addEventListener"]
-      var _ans34 = _ans33(為, 探聽鼠標)
+      var _ans31 = 監聽術(畫布元素, 為, 捕鼠者)
     }
   }
+  var 無術 = () => 0
   var 得一畫布 = (this.得一畫布 = () => 0)
   得一畫布 = this.得一畫布 = function(畫布之名) {
-    var _ans35 = 得一元素(畫布之名)
-    畫布元素 = _ans35
+    var _ans32 = 得一元素(畫布之名)
+    畫布元素 = _ans32
     if (畫布元素 == null) {
       var _rand1 = new Error()
       _rand1.name = "無此畫布"
       throw _rand1
       return
     }
-    var _ans36 = 畫布元素.getContext("2d")
-    上下文 = _ans36
-    var _ans37 = 設字尺寸(四號)
+    var _ans33 = 畫布元素.getContext("2d")
+    上下文 = _ans33
+    var _ans34 = 設字尺寸(四號)
     var 畫布 = {}
     畫布 = {
       元素: 畫布元素,
@@ -266,8 +271,23 @@ var 畫布經 = new (function() {
       設字尺寸: 設字尺寸,
       設字行高: 設字行高,
       設字體: 設字體,
-      打探鼠標: 打探鼠標
+      捕鼠者: 無術
     }
+    var 捕鼠者 = () => 0
+    捕鼠者 = function(鼠) {
+      if (畫布["捕鼠者"] == 無術) {
+        return
+      }
+      var _ans35 = 畫布["捕鼠者"]
+      var 真捕鼠者 = _ans35
+      if (真捕鼠者) {
+        var _ans36 = 解鼠(鼠)
+        var 鼠況 = _ans36
+        var _ans37 = 鼠.preventDefault()
+        var _ans38 = 真捕鼠者(鼠況)
+      }
+    }
+    var _ans39 = 捕鼠(捕鼠者)
     return 畫布
   }
   var 字號 = (this.字號 = {})
@@ -564,14 +584,14 @@ var 新製一棋盤 = () => 0
   var _ans77 = 畫布.填充其內()
   var _ans78 = 畫布.描其輪廓()
 }
-var 碩鼠探子 = () => 0
-碩鼠探子 = function(情報) {
-  var _ans79 = 情報["橫"]
+var 捕鼠者 = () => 0
+捕鼠者 = function(鼠) {
+  var _ans79 = 鼠["橫"]
   var _ans80 = _ans79 - 左
   var _ans81 = _ans80 / 一格
   var _ans82 = 取底(_ans81)
   var 列序 = _ans82
-  var _ans83 = 情報["縱"]
+  var _ans83 = 鼠["縱"]
   var _ans84 = _ans83 - 上
   var _ans85 = _ans84 / 一格
   var _ans86 = 取底(_ans85)
@@ -603,7 +623,7 @@ var 碩鼠探子 = () => 0
   if (棧值 > 0) {
     return
   }
-  if (情報[奔走乎 - 1]) {
+  if (鼠[奔走乎 - 1]) {
     var _ans96 = 畫布.起筆()
     var _ans97 = 畫布.設輪廓之色(深灰色)
     var _ans98 = 畫布.設填充之色(白煙色)
@@ -613,7 +633,7 @@ var 碩鼠探子 = () => 0
     舊列序 = 列序
     return
   }
-  if (情報[推敲乎 - 1]) {
+  if (鼠[推敲乎 - 1]) {
     var _ans101 = 製矩形一開格(列序)(行序)
     var _ans102 = 格內題數(臨時之數)(列序)(行序)
     臨時之數 = 臨時之數 + 1
@@ -630,5 +650,4 @@ var 舊行序 = -1
 var 舊列序 = -1
 var 臨時之數 = 1
 var _ans104 = 新製一棋盤()
-var _ans105 = 畫布["打探鼠標"]
-var _ans106 = _ans105(碩鼠探子)
+畫布["捕鼠者"] = 捕鼠者

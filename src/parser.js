@@ -39,7 +39,8 @@ function wy2tokens(txt) {
       txt[i] == "\n" ||
       txt[i] == "\r" ||
       txt[i] == "\t" ||
-      txt[i] == " "
+      txt[i] == " " ||
+      txt[i] == "\u00A0"
     ) {
       if (idt || data) {
         tok += txt[i];

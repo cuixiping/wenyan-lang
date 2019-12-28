@@ -33410,12 +33410,12 @@ try {
 } catch (e) {}
 ;
 try {
-var { hanzi2num, num2hanzi } = require("./hanzi2num");
-var hanzi2pinyin = require("./hanzi2pinyin");
-var STDLIB = require("./stdlib");
-var { NUMBER_KEYWORDS, KEYWORDS } = require("./keywords");
-var version = require("./version");
-var compilers = require("./compiler/compilers");
+  var { hanzi2num, num2hanzi } = require("./hanzi2num");
+  var hanzi2pinyin = require("./hanzi2pinyin");
+  var STDLIB = require("./stdlib");
+  var { NUMBER_KEYWORDS, KEYWORDS } = require("./keywords");
+  var version = require("./version");
+  var compilers = require("./compiler/compilers");
 } catch (e) {}
 
 function wy2tokens(txt) {
@@ -33450,7 +33450,8 @@ function wy2tokens(txt) {
       txt[i] == "\n" ||
       txt[i] == "\r" ||
       txt[i] == "\t" ||
-      txt[i] == " "
+      txt[i] == " " ||
+      txt[i] == "\u00A0"
     ) {
       if (idt || data) {
         tok += txt[i];
@@ -34142,10 +34143,10 @@ try {
 } catch (e) {}
 ;
 try {
-// var fs = require("fs");
-var { semantic } = require("./highlight");
-var { num2hanzi } = require("./hanzi2num");
-var parser = require("./parser");
+  // var fs = require("fs");
+  var { semantic } = require("./highlight");
+  var { num2hanzi } = require("./hanzi2num");
+  var parser = require("./parser");
 } catch (e) {}
 
 var FONT = "'I.Ming', 'Source Han Serif KR', 'Noto Serif CJK KR', serif"; //"Source Han Serif TC"
