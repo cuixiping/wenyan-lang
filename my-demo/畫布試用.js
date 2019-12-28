@@ -1,8 +1,8 @@
 /*___wenyan_module_畫布經_start___*/
 var 畫布經 = new (function() {
-  /*___wenyan_module_洋經_start___*/
-  var 洋經 = new (function() {
-    /*"此乃洋經"*/
+  /*___wenyan_module_洋話經_start___*/
+  var 洋話經 = new (function() {
+    /*"此乃洋話經"*/
     var 虛無 = (this.虛無 = null)
     var 未定義 = (this.未定義 = undefined)
     var 虛空 = (this.虛空 = "")
@@ -42,7 +42,7 @@ var 畫布經 = new (function() {
     var 上 = (this.上 = "top")
     var 二維 = (this.二維 = "2d")
   })()
-  /*___wenyan_module_洋經_end___*/
+  /*___wenyan_module_洋話經_end___*/
 
   /*"此乃畫布經"*/
   var 奔走 = "mousemove"
@@ -336,9 +336,9 @@ var 色彩經 = new (function() {
 })()
 /*___wenyan_module_色彩經_end___*/
 
-/*___wenyan_module_洋經_start___*/
-var 洋經 = new (function() {
-  /*"此乃洋經"*/
+/*___wenyan_module_洋話經_start___*/
+var 洋話經 = new (function() {
+  /*"此乃洋話經"*/
   var 虛無 = (this.虛無 = null)
   var 未定義 = (this.未定義 = undefined)
   var 虛空 = (this.虛空 = "")
@@ -378,7 +378,7 @@ var 洋經 = new (function() {
   var 上 = (this.上 = "top")
   var 二維 = (this.二維 = "2d")
 })()
-/*___wenyan_module_洋經_end___*/
+/*___wenyan_module_洋話經_end___*/
 
 /*"此乃畫布經試用一例。"*/
 var 純白色 = 色彩經.純白色
