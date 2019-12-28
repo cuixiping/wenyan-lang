@@ -1,11 +1,11 @@
-//try {
-var { hanzi2num, num2hanzi } = require("./hanzi2num");
-var hanzi2pinyin = require("./hanzi2pinyin");
-var STDLIB = require("./stdlib");
-var { NUMBER_KEYWORDS, KEYWORDS } = require("./keywords");
-var version = require("./version");
-var compilers = require("./compiler/compilers");
-//} catch (e) {}
+try {
+  var { hanzi2num, num2hanzi } = require("./hanzi2num");
+  var hanzi2pinyin = require("./hanzi2pinyin");
+  var STDLIB = require("./stdlib");
+  var { NUMBER_KEYWORDS, KEYWORDS } = require("./keywords");
+  var version = require("./version");
+  var compilers = require("./compiler/compilers");
+} catch (e) {}
 
 function wy2tokens(txt) {
   var tokens = [];

@@ -1,5 +1,50 @@
-/*___wenyan_module_畫布經_start___*/ var 畫布經 = new (function() {
-  /*"此乃畫布經"*/ var 上下文 = 0
+/*___wenyan_module_畫布經_start___*/
+var 畫布經 = new (function() {
+  /*___wenyan_module_洋經_start___*/
+  var 洋經 = new (function() {
+    /*"此乃洋經"*/
+    var 虛無 = (this.虛無 = null)
+    var 未定義 = (this.未定義 = undefined)
+    var 虛空 = (this.虛空 = "")
+    var 空格 = (this.空格 = " ")
+    var 斜線 = (this.斜線 = "/")
+    var 百分號 = (this.百分號 = "%")
+    var 磅 = (this.磅 = "pt")
+    var 像素 = (this.像素 = "px")
+    var 無襯線 = (this.無襯線 = "sans-serif")
+    var 文檔 = (this.文檔 = "document")
+    var 取元素于名 = (this.取元素于名 = "getElementById")
+    var 填充式樣 = (this.填充式樣 = "fillStyle")
+    var 描繪式樣 = (this.描繪式樣 = "strokeStyle")
+    var 線寬 = (this.線寬 = "lineWidth")
+    var 描繪 = (this.描繪 = "stroke")
+    var 填充 = (this.填充 = "fill")
+    var 起筆 = (this.起筆 = "beginPath")
+    var 封口 = (this.封口 = "closePath")
+    var 移筆 = (this.移筆 = "moveTo")
+    var 直行 = (this.直行 = "lineTo")
+    var 曲行 = (this.曲行 = "bezierCurveTo")
+    var 矩形 = (this.矩形 = "rect")
+    var 題字 = (this.題字 = "fillText")
+    var 字體 = (this.字體 = "font")
+    var 監聽 = (this.監聽 = "addEventListener")
+    var 推敲 = (this.推敲 = "click")
+    var 奔走 = (this.奔走 = "mousemove")
+    var 按下 = (this.按下 = "mousedown")
+    var 抬起 = (this.抬起 = "mouseup")
+    var 客户端橫 = (this.客户端橫 = "clientX")
+    var 客户端縱 = (this.客户端縱 = "clientY")
+    var 種類 = (this.種類 = "type")
+    var 按鈕 = (this.按鈕 = "button")
+    var 取所圍矩形 = (this.取所圍矩形 = "getBoundingClientRect")
+    var 左 = (this.左 = "left")
+    var 上 = (this.上 = "top")
+    var 二維 = (this.二維 = "2d")
+  })()
+  /*___wenyan_module_洋經_end___*/
+
+  /*"此乃畫布經"*/
+  var 上下文 = 0
   var 畫布元素 = 0
   var 得一元素 = () => 0
   得一元素 = function(元素之名) {
@@ -118,24 +163,90 @@
     var 式樣 = _ans22
     上下文["font"] = 式樣
   }
+  var 打探鼠標之本 = () => 0
+  打探鼠標之本 = function(所為) {
+    return function(探子) {
+      var _ans23 = 畫布元素.addEventListener(所為, 探子)
+    }
+  }
   var 打探鼠標 = () => 0
   打探鼠標 = function(探子) {
-    var _ans23 = 畫布元素.addEventListener(奔走, 探子)
-    var _ans24 = 畫布元素.addEventListener(推敲, 探子)
+    var 奔走 = "mousemove"
+    var 推敲 = "click"
+    var 按下 = "mousedown"
+    var 抬起 = "mouseup"
+    var 探聽鼠標 = () => 0
+    探聽鼠標 = function(鼠報) {
+      var _ans24 = 鼠報.preventDefault()
+      var _ans25 = 鼠報["clientX"]
+      var 橫 = _ans25
+      var _ans26 = 鼠報["clientY"]
+      var 縱 = _ans26
+      var _ans27 = 鼠報["type"]
+      var 所為 = _ans27
+      var _ans28 = 鼠報["button"]
+      var 所按 = _ans28
+      var _ans29 = 畫布元素.getBoundingClientRect()
+      var 畫布方位 = _ans29
+      var _ans30 = 橫 - 畫布方位.left
+      橫 = _ans30
+      var _ans31 = 縱 - 畫布方位.top
+      縱 = _ans31
+      var 報 = {}
+      報 = {
+        橫: 橫,
+        縱: 縱,
+        奔走乎: false,
+        推敲乎: false,
+        按下乎: false,
+        抬起乎: false,
+        左鍵乎: false,
+        中鍵乎: false,
+        右鍵乎: false
+      }
+      if (所為 == 奔走) {
+        報["奔走乎"] = true
+      }
+      if (所為 == 推敲) {
+        報["推敲乎"] = true
+      }
+      if (所為 == 按下) {
+        報["按下乎"] = true
+      }
+      if (所為 == 抬起) {
+        報["抬起乎"] = true
+      }
+      if (所按 == 0) {
+        報["左鍵乎"] = true
+      }
+      if (所按 == 1) {
+        報["中鍵乎"] = true
+      }
+      if (所按 == 2) {
+        報["右鍵乎"] = true
+      }
+      var _ans32 = 探子(報)
+    }
+    var 可為 = []
+    可為.push(4, 2)
+    for (var 為 of 可為) {
+      var _ans33 = 畫布元素["addEventListener"]
+      var _ans34 = _ans33(為, 探聽鼠標)
+    }
   }
   var 得一畫布 = (this.得一畫布 = () => 0)
   得一畫布 = this.得一畫布 = function(畫布之名) {
-    var _ans25 = 得一元素(畫布之名)
-    畫布元素 = _ans25
+    var _ans35 = 得一元素(畫布之名)
+    畫布元素 = _ans35
     if (畫布元素 == null) {
       var _rand1 = new Error()
       _rand1.name = "無此畫布"
       throw _rand1
       return
     }
-    var _ans26 = 畫布元素.getContext("2d")
-    上下文 = _ans26
-    var _ans27 = 設字尺寸(四號)
+    var _ans36 = 畫布元素.getContext("2d")
+    上下文 = _ans36
+    var _ans37 = 設字尺寸(四號)
     var 畫布 = {}
     畫布 = {
       元素: 畫布元素,
@@ -177,9 +288,12 @@
   var 奔走 = (this.奔走 = "mousemove")
   var 推敲 = (this.推敲 = "click")
 })()
-/*___wenyan_module_畫布經_end___*/ /*___wenyan_module_色彩經_start___*/ var 色彩經 = new (function() {
-  /*"https://www.cnblogs.com/remember-forget/p/8134849.html"*/ var 純白色 = (this.純白色 =
-    "#FFFFFF")
+/*___wenyan_module_畫布經_end___*/
+
+/*___wenyan_module_色彩經_start___*/
+var 色彩經 = new (function() {
+  /*"https://www.cnblogs.com/remember-forget/p/8134849.html"*/
+  var 純白色 = (this.純白色 = "#FFFFFF")
   var 淺灰色 = (this.淺灰色 = "#D3D3D3")
   var 深灰色 = (this.深灰色 = "#A9A9A9")
   var 暗灰色 = (this.暗灰色 = "#696969")
@@ -194,8 +308,53 @@
   var 深黑色 = (this.深黑色 = "#333333")
   var 猩红色 = (this.猩红色 = "#DC143C")
 })()
-/*___wenyan_module_色彩經_end___*/ /*"此乃畫布經試用。"*/ var 純白色 =
-  色彩經.純白色
+/*___wenyan_module_色彩經_end___*/
+
+/*___wenyan_module_洋經_start___*/
+var 洋經 = new (function() {
+  /*"此乃洋經"*/
+  var 虛無 = (this.虛無 = null)
+  var 未定義 = (this.未定義 = undefined)
+  var 虛空 = (this.虛空 = "")
+  var 空格 = (this.空格 = " ")
+  var 斜線 = (this.斜線 = "/")
+  var 百分號 = (this.百分號 = "%")
+  var 磅 = (this.磅 = "pt")
+  var 像素 = (this.像素 = "px")
+  var 無襯線 = (this.無襯線 = "sans-serif")
+  var 文檔 = (this.文檔 = "document")
+  var 取元素于名 = (this.取元素于名 = "getElementById")
+  var 填充式樣 = (this.填充式樣 = "fillStyle")
+  var 描繪式樣 = (this.描繪式樣 = "strokeStyle")
+  var 線寬 = (this.線寬 = "lineWidth")
+  var 描繪 = (this.描繪 = "stroke")
+  var 填充 = (this.填充 = "fill")
+  var 起筆 = (this.起筆 = "beginPath")
+  var 封口 = (this.封口 = "closePath")
+  var 移筆 = (this.移筆 = "moveTo")
+  var 直行 = (this.直行 = "lineTo")
+  var 曲行 = (this.曲行 = "bezierCurveTo")
+  var 矩形 = (this.矩形 = "rect")
+  var 題字 = (this.題字 = "fillText")
+  var 字體 = (this.字體 = "font")
+  var 監聽 = (this.監聽 = "addEventListener")
+  var 推敲 = (this.推敲 = "click")
+  var 奔走 = (this.奔走 = "mousemove")
+  var 按下 = (this.按下 = "mousedown")
+  var 抬起 = (this.抬起 = "mouseup")
+  var 客户端橫 = (this.客户端橫 = "clientX")
+  var 客户端縱 = (this.客户端縱 = "clientY")
+  var 種類 = (this.種類 = "type")
+  var 按鈕 = (this.按鈕 = "button")
+  var 取所圍矩形 = (this.取所圍矩形 = "getBoundingClientRect")
+  var 左 = (this.左 = "left")
+  var 上 = (this.上 = "top")
+  var 二維 = (this.二維 = "2d")
+})()
+/*___wenyan_module_洋經_end___*/
+
+/*"此乃畫布經試用一例。"*/
+var 純白色 = 色彩經.純白色
 var 白煙色 = 色彩經.白煙色
 var 淺灰色 = 色彩經.淺灰色
 var 深灰色 = 色彩經.深灰色
@@ -229,8 +388,8 @@ var 取底 = (this.取底 = () => 0)
   var 符 = _ans1
   var _ans2 = 甲 * 符
   var 乙 = _ans2
-  /*"JavaScript者。除負以正。所餘負也。Python者。除負以正。所餘正也。"*/ var _ans3 =
-    乙 % 1
+  /*"JavaScript者。除負以正。所餘負也。Python者。除負以正。所餘正也。"*/
+  var _ans3 = 乙 % 1
   var 丙 = _ans3
   if (丙 > 0) {
     var _ans4 = 乙 - 丙
@@ -252,7 +411,22 @@ var _ans8 = 畫布.設字尺寸(字號.四號)
 var _ans9 = 畫布.設輪廓之色(深灰色)
 var _ans10 = 畫布.設填充之色(淺灰色)
 var _ans11 = 畫布.設輪廓粗細(2)
-/*畫布.移筆*/ /*畫布.直行*/ /*畫布.直行*/ /*畫布.直行*/ /*畫布.曲行*/ /*畫布.描其輪廓*/ /*左*/ /*上*/ var 左 = 10
+/*畫布.移筆*/
+
+/*畫布.直行*/
+
+/*畫布.直行*/
+
+/*畫布.直行*/
+
+/*畫布.曲行*/
+
+/*畫布.描其輪廓*/
+
+/*左*/
+
+/*上*/
+var 左 = 10
 var 上 = 10
 var 右 = 310
 var 下 = 430
@@ -262,7 +436,10 @@ var 製一棋盤 = () => 0
 製一棋盤 = function() {
   var 橫 = 左
   var 縱 = 上
-  /*橫*/ /*縱*/ for (var _rand1 = 0; _rand1 < 15; _rand1++) {
+  /*橫*/
+
+  /*縱*/
+  for (var _rand1 = 0; _rand1 < 15; _rand1++) {
     var _ans12 = 畫布.移筆(橫)(縱)
     var _ans13 = 畫布.直行(右)(縱)
     var _ans14 = 縱 + 一格
@@ -303,7 +480,8 @@ var 格內題數 = () => 0
     return function(行序) {
       var _ans27 = 數文列[數 - 1]
       var 文 = _ans27
-      var 彩 = 數彩列[數 - 1]
+      var _ans28 = 數彩列[數 - 1]
+      var 彩 = _ans28
       var _ans29 = 列序 * 一格
       var _ans30 = _ans29 + 左
       var _ans31 = _ans30 + 5
@@ -371,7 +549,10 @@ var 新製一棋盤 = () => 0
 新製一棋盤 = function() {
   var 橫 = 左
   var 縱 = 上
-  /*橫*/ /*縱*/ for (var _rand3 = 0; _rand3 < 14; _rand3++) {
+  /*橫*/
+
+  /*縱*/
+  for (var _rand3 = 0; _rand3 < 14; _rand3++) {
     橫 = 左
     for (var _rand4 = 0; _rand4 < 10; _rand4++) {
       var _ans74 = 畫布.矩形(橫)(縱)(一格)(一格)
@@ -383,30 +564,24 @@ var 新製一棋盤 = () => 0
   var _ans77 = 畫布.填充其內()
   var _ans78 = 畫布.描其輪廓()
 }
-var 探聽鼠標 = () => 0
-探聽鼠標 = function(情報) {
-  var 大橫 = 情報["clientX"]
-  var 大縱 = 情報["clientY"]
-  var 事之種類 = 情報["type"]
-  var 畫布方位 = 畫布.元素.getBoundingClientRect()
-  大橫 = 大橫 - 畫布方位.left
-  大縱 = 大縱 - 畫布方位.top
-  var _ans85 = 大橫
-  var _ans86 = _ans85 - 左
-  var _ans87 = _ans86 / 一格
-  var 列序 = _ans87
-  var _ans88 = 大縱
-  var _ans89 = _ans88 - 上
-  var _ans90 = _ans89 / 一格
-  var 行序 = _ans90
-  行序 = 取底(行序)
-  列序 = 取底(列序)
+var 碩鼠探子 = () => 0
+碩鼠探子 = function(情報) {
+  var _ans79 = 情報["橫"]
+  var _ans80 = _ans79 - 左
+  var _ans81 = _ans80 / 一格
+  var _ans82 = 取底(_ans81)
+  var 列序 = _ans82
+  var _ans83 = 情報["縱"]
+  var _ans84 = _ans83 - 上
+  var _ans85 = _ans84 / 一格
+  var _ans86 = 取底(_ans85)
+  var 行序 = _ans86
   if (舊行序 > -1) {
-    var _ans93 = 畫布.起筆()
-    var _ans94 = 畫布.設輪廓之色(深灰色)
-    var _ans95 = 畫布.設填充之色(淺灰色)
-    var _ans96 = 畫布.設輪廓粗細(2)
-    var _ans97 = 製一小格(舊列序)(舊行序)
+    var _ans87 = 畫布.起筆()
+    var _ans88 = 畫布.設輪廓之色(深灰色)
+    var _ans89 = 畫布.設填充之色(淺灰色)
+    var _ans90 = 畫布.設輪廓粗細(2)
+    var _ans91 = 製一小格(舊列序)(舊行序)
   }
   if (行序 < 0) {
     return
@@ -420,27 +595,27 @@ var 探聽鼠標 = () => 0
   if (列序 > 9) {
     return
   }
-  var _ans98 = 行序 * 10
-  var _ans99 = _ans98 + 列序
-  var _ans100 = _ans99 + 1
-  var 棧序 = _ans100
+  var _ans92 = 行序 * 10
+  var _ans93 = _ans92 + 列序
+  var _ans94 = _ans93 + 1
+  var 棧序 = _ans94
   var 棧值 = 格棧[棧序 - 1]
   if (棧值 > 0) {
     return
   }
-  if (事之種類 == 奔走) {
-    var _ans102 = 畫布.起筆()
-    var _ans103 = 畫布.設輪廓之色(深灰色)
-    var _ans104 = 畫布.設填充之色(白煙色)
-    var _ans105 = 畫布.設輪廓粗細(2)
-    var _ans106 = 製一小格(列序)(行序)
+  if (情報[奔走乎 - 1]) {
+    var _ans96 = 畫布.起筆()
+    var _ans97 = 畫布.設輪廓之色(深灰色)
+    var _ans98 = 畫布.設填充之色(白煙色)
+    var _ans99 = 畫布.設輪廓粗細(2)
+    var _ans100 = 製一小格(列序)(行序)
     舊行序 = 行序
     舊列序 = 列序
     return
   }
-  if (事之種類 == 推敲) {
-    var _ans107 = 製矩形一開格(列序)(行序)
-    var _ans108 = 格內題數(臨時之數)(列序)(行序)
+  if (情報[推敲乎 - 1]) {
+    var _ans101 = 製矩形一開格(列序)(行序)
+    var _ans102 = 格內題數(臨時之數)(列序)(行序)
     臨時之數 = 臨時之數 + 1
     if (臨時之數 > 8) {
       臨時之數 = 1
@@ -451,8 +626,9 @@ var 探聽鼠標 = () => 0
     return
   }
 }
-var _ans110 = 新製一棋盤()
 var 舊行序 = -1
 var 舊列序 = -1
-var _ans111 = 畫布.打探鼠標(探聽鼠標)
 var 臨時之數 = 1
+var _ans104 = 新製一棋盤()
+var _ans105 = 畫布["打探鼠標"]
+var _ans106 = _ans105(碩鼠探子)

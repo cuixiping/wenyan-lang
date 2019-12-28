@@ -84,7 +84,7 @@ function main() {
     var title = makeTitle(example);
     document.title = title;
     ed.innerText = prgms[example];
-    run();
+    compileOnly();
     if (history.pushState) {
       var url = "?example=" + encodeURIComponent(example);
       history.pushState({ example: example }, title, url);
@@ -96,7 +96,7 @@ function main() {
       sel.value = example;
       document.title = makeTitle(example);
       ed.innerText = prgms[example];
-      run();
+      compileOnly();
     }
   };
   var autohl = document.getElementById("auto-hl");
@@ -133,34 +133,45 @@ function main() {
     selr.appendChild(opt);
   }
   selr.value = "none";
-  selr.onchange = run;
+  selr.onchange = compileOnly;
 
   var hidestd = document.getElementById("hide-std");
-  hidestd.onchange = run;
+  hidestd.onchange = compileOnly;
 
-  function run() {
-    highlightCode();
-    document.getElementById("out").innerText = "";
-    var code = compile("js", ed.innerText, {
+  function getCompileResult() {
+    return compile("js", ed.innerText, {
       romanizeIdentifiers: selr.value,
       resetVarCnt: true,
       errorCallback: log2div,
       lib: STDLIB,
       reader: x => prgms[x]
     });
-
+  }
+  function run() {
+    highlightCode();
+    document.getElementById("out").innerText = "";
+    var code = getCompileResult();
     var showcode = hidestd.checked ? hideImportedModules(code) : code;
-
     document.getElementById("js").innerText = js_beautify(showcode);
     hljs.highlightBlock(document.getElementById("js"));
     code = code.replace(/console.log\(/g, `log2div(`);
     eval(code);
+  }
+  function compileOnly() {
+    highlightCode();
+    document.getElementById("out").innerText = "";
+    var code = getCompileResult();
+    var showcode = hidestd.checked ? hideImportedModules(code) : code;
+    document.getElementById("js").innerText = js_beautify(showcode);
+    hljs.highlightBlock(document.getElementById("js"));
+    code = code.replace(/console.log\(/g, `log2div(`);
   }
 
   // document.getElementById("in").append(ln);
   document.getElementById("in").append(ed);
 
   document.getElementById("run").onclick = run;
+  document.getElementById("compile").onclick = compileOnly;
   function log2div() {
     var outdiv = document.getElementById("out");
     for (var i = 0; i < arguments.length; i++) {
@@ -172,7 +183,7 @@ function main() {
     }
     outdiv.innerText += "\n";
   }
-  run();
+  compileOnly();
 }
 
 var html = `<!--GENERATED FILE, DO NOT READ-->
@@ -182,7 +193,7 @@ var html = `<!--GENERATED FILE, DO NOT READ-->
 <style>
 [contenteditable="true"]:focus {outline: none;}
 pre{tab-size: 4;}
-.tbar{background:white;color:black;font-style:italic;font-family:monospace;font-size:14px;opacity:80%;margin-top:20px;}
+.tbar{background:white;color:black;font-style:italic;font-family:monospace;font-size:14px;opacity:80%;margin-top:20px;padding:2px;}
 </style>
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.10.2/beautify.js"></script>
@@ -191,7 +202,7 @@ pre{tab-size: 4;}
 <script>${utils.catsrc()}</script>
 <body style="background:#272822;padding:20px;color:white;font-family:sans-serif;">
   <h2><i>wenyan-lang</i></h2>
-<table><tr><td><select id="pick-example"></select><button id="run">Run</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="auto-hl"/><small>Auto Highlight</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="hide-std" checked=""/><small>Hide Imported Code</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>Romanization</small><select id="pick-roman"></select></td></tr><tr><td id="in" valign="top"><div class="tbar">EDITOR</div></td><td rowspan="2" valign="top"><div class="tbar">COMPILED JAVASCRIPT</div><pre id="js"></pre></td></tr><tr><td valign="top"><div class="tbar">OUTPUT</div><pre id="out"></pre></td></tr></table>
+<table><tr><td><select id="pick-example"></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="auto-hl"/><small>Auto Highlight</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="hide-std" checked=""/><small>Hide Imported Code</small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small>Romanization</small><select id="pick-roman"></select></td></tr><tr><td id="in" valign="top"><div class="tbar">EDITOR <button id="compile" type="button">Compile</button> <button id="run" type="button">Run</button></div></td><td rowspan="2" valign="top"><div class="tbar">COMPILED JAVASCRIPT</div><pre id="js"></pre></td></tr><tr><td valign="top"><div class="tbar">OUTPUT</div><pre id="out"></pre></td></tr></table>
 <script>var STDLIB = ${JSON.stringify(lib)};</script>
 <script>var prgms = ${JSON.stringify(prgms)};</script>
 <script>var examplesAlias = ${JSON.stringify(examplesAlias)};</script>
