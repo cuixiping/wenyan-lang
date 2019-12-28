@@ -1,11 +1,11 @@
-try {
-  var { hanzi2num, num2hanzi } = require("./hanzi2num");
-  var hanzi2pinyin = require("./hanzi2pinyin");
-  var STDLIB = require("./stdlib");
-  var { NUMBER_KEYWORDS, KEYWORDS } = require("./keywords");
-  var version = require("./version");
-  var compilers = require("./compiler/compilers");
-} catch (e) {}
+//try {
+var { hanzi2num, num2hanzi } = require("./hanzi2num");
+var hanzi2pinyin = require("./hanzi2pinyin");
+var STDLIB = require("./stdlib");
+var { NUMBER_KEYWORDS, KEYWORDS } = require("./keywords");
+var version = require("./version");
+var compilers = require("./compiler/compilers");
+//} catch (e) {}
 
 function wy2tokens(txt) {
   var tokens = [];
@@ -688,9 +688,9 @@ function compile(
   imports = Array.from(new Set(imports));
   for (var i = 0; i < imports.length; i++) {
     var isrc;
-    if (imports[i] in lib[lang]) {
+    if (lib && lib[lang] && imports[i] in lib[lang]) {
       isrc = lib[lang][imports[i]];
-    } else if (imports[i] in lib) {
+    } else if (lib && imports[i] in lib) {
       isrc = lib[imports[i]];
     } else {
       isrc = reader(imports[i]);
